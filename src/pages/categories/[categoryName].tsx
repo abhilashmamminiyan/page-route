@@ -1,17 +1,15 @@
 import Head from 'next/head'
-import ProductCard from "../../../components/product-card/ProductCard"
-import { ProductService } from "../../../services/products-services"
+import ProductCard from "../../components/product-card/ProductCard"
+import { ProductService } from "../../services/products-services"
 import { GetServerSideProps } from 'next'
 
 interface CategoryProductProps {
   categoryName: string
-  productId: string
   productList: any[]
 }
 
 export default function CategoryProduct({ 
   categoryName, 
-  productId, 
   productList 
 }: CategoryProductProps) {
   return (
@@ -21,7 +19,6 @@ export default function CategoryProduct({
       </Head>
       <div>
         category : {categoryName} <br />
-        categoryProduct: ProductId : {productId}
         <br />
         <h3>{categoryName} Products</h3>
         <div className="d-flex flex-wrap gap-2">
@@ -46,7 +43,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       categoryName: decodedCategory,
-      productId,
       productList
     }
   }

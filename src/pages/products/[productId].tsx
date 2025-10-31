@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useCart } from '../../context/cartContext'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 interface ProductDetailProps {
   product: any
@@ -54,7 +55,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             <h2 className="mb-3">{product.title}</h2>
             
             <div className="mb-3">
+              <Link href={`/categories/${product.category}`}>
               <span className="badge bg-secondary">{product.category}</span>
+              </Link>
             </div>
             
             <div className="mb-3">
